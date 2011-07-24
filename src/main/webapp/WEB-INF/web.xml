@@ -4,22 +4,40 @@
 
 <web-app>
 	<display-name>Spring JPA Sample</display-name>
-	
+
 
 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/applicationContext.xml</param-value>
 	</context-param>
+
+
+	<filter>
+		<filter-name>oemInViewFilter</filter-name>
+		<filter-class>
+			org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter
+    </filter-class>
+		<init-param>
+			<param-name>entityManagerFactoryBeanName</param-name>
+			<param-value>entityManagerFactory</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>oemInViewFilter</filter-name>
+		<url-pattern>*</url-pattern>
+	</filter-mapping>
+
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-	
-		<servlet>
+
+	<servlet>
 		<servlet-name>testServlet</servlet-name>
 		<servlet-class>name.felixbecker.sandbox.springdata.servlets.TestServlet</servlet-class>
 	</servlet>
-	
+
 	<servlet-mapping>
 		<servlet-name>testServlet</servlet-name>
 		<url-pattern>/*</url-pattern>
