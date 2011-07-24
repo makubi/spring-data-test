@@ -10,5 +10,8 @@
 	<context:component-scan base-package="name.felixbecker.sandbox.springdata" />
 	<jpa:repositories base-package="name.felixbecker.sandbox.springdata.repositories"></jpa:repositories>
 	<import resource="database.xml"/>
-	 <tx:annotation-driven transaction-manager="txManager"/>
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	
+	<bean id="userService" class="name.felixbecker.sandbox.springdata.services.UserService" /> 
+	 
 </beans>

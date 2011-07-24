@@ -4,6 +4,8 @@
 
 <web-app>
 	<display-name>Spring JPA Sample</display-name>
+	
+
 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
@@ -12,4 +14,14 @@
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
+	
+		<servlet>
+		<servlet-name>testServlet</servlet-name>
+		<servlet-class>name.felixbecker.sandbox.springdata.servlets.TestServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>testServlet</servlet-name>
+		<url-pattern>/*</url-pattern>
+	</servlet-mapping>
 </web-app>
