@@ -4,12 +4,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class User {
 	private String firstName;
 	private String lastName;
 	private int age;
+	
+	@ManyToOne
+	private Address address;
 	
 	@Id	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
@@ -40,6 +44,19 @@ public class User {
 	}
 	public void setId(Long id) {
 		this.id = id;
-	} 
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+	@Override
+	public String toString() {
+		return "User [firstName=" + firstName + ", lastName=" + lastName
+				+ ", age=" + age + ", address=" + address + ", id=" + id + "]";
+	}
+	
 	
 }
