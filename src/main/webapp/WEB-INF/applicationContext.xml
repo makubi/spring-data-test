@@ -13,5 +13,5 @@
 	<tx:annotation-driven transaction-manager="transactionManager"/>
 	
 	<bean id="userService" class="name.felixbecker.sandbox.springdata.services.UserService" /> 
-	 
+	<bean id="wicketApplication" class="name.felixbecker.sandbox.springdata.web.SampleWebApplication" />
 </beans>

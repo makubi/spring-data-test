@@ -12,7 +12,7 @@
 		<param-value>/WEB-INF/applicationContext.xml</param-value>
 	</context-param>
 
-
+	<!-- JPA jedoens, OSIV (falls Hibernate) / OEMIV (JPA EM) -->
 	<filter>
 		<filter-name>oemInViewFilter</filter-name>
 		<filter-class>
@@ -24,22 +24,40 @@
 		</init-param>
 	</filter>
 
+	<!-- wicket filter stuff -->
+
+	<filter>
+		<filter-name>wicket-filter</filter-name>
+		<filter-class>org.apache.wicket.protocol.http.WicketFilter</filter-class>
+
+
+		<init-param>
+			<param-name>applicationFactoryClassName</param-name>
+			<param-value>org.apache.wicket.spring.SpringWebApplicationFactory</param-value>
+		</init-param>
+
+		<init-param>
+			<param-name>applicationBean</param-name>
+			<param-value>wicketApplication</param-value>
+		</init-param>
+
+	</filter>
+
 	<filter-mapping>
 		<filter-name>oemInViewFilter</filter-name>
 		<url-pattern>*</url-pattern>
+	</filter-mapping>
+
+	<filter-mapping>
+		<filter-name>wicket-filter</filter-name>
+		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
-	<servlet>
-		<servlet-name>testServlet</servlet-name>
-		<servlet-class>name.felixbecker.sandbox.springdata.servlets.TestServlet</servlet-class>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>testServlet</servlet-name>
-		<url-pattern>/*</url-pattern>
-	</servlet-mapping>
+	<!-- <servlet> <servlet-name>testServlet</servlet-name> <servlet-class>name.felixbecker.sandbox.springdata.servlets.TestServlet</servlet-class> 
+		</servlet> <servlet-mapping> <servlet-name>testServlet</servlet-name> <url-pattern>/*</url-pattern> 
+		</servlet-mapping> -->
 </web-app>
