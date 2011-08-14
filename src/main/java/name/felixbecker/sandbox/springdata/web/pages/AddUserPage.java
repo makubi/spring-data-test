@@ -1,15 +1,14 @@
 package name.felixbecker.sandbox.springdata.web.pages;
 
-import org.apache.log4j.Logger;
-import org.apache.wicket.markup.html.form.Form;
-import org.apache.wicket.markup.html.form.RequiredTextField;
-import org.apache.wicket.markup.html.form.TextField;
-import org.apache.wicket.model.PropertyModel;
-import org.apache.wicket.spring.injection.annot.SpringBean;
-
 import name.felixbecker.sandbox.springdata.entities.User;
 import name.felixbecker.sandbox.springdata.repositories.UserRepository;
 import name.felixbecker.sandbox.springdata.web.MainTemplate;
+
+import org.apache.log4j.Logger;
+import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.form.RequiredTextField;
+import org.apache.wicket.model.PropertyModel;
+import org.apache.wicket.spring.injection.annot.SpringBean;
 
 public class AddUserPage extends MainTemplate {
 	private static final Logger LOG = Logger.getLogger(AddUserPage.class);
