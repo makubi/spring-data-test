@@ -1,4 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <wicket:extend>
 	<p>Ich möchte einen Benutzer hinzufügen, dafür kann ich foobar</p>
+	<form wicket:id="addUserForm">
+		<table>
+			<tr>
+				<td>Vorname:</td>
+				<td><input type="text" wicket:id="firstName" /></td>
+			</tr>
+			<tr>
+				<td>Nachname:</td>
+				<td><input type="text" wicket:id="lastName" /></td>
+			</tr>
+			<tr>
+				<td>Alter:</td>
+				<td><input type="text" wicket:id="age" /></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="submit" value="save user" /></td>
+			</tr>
+		</table>
+	</form>
 </wicket:extend>
