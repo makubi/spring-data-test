@@ -6,6 +6,7 @@ import java.util.List;
 
 import name.felixbecker.sandbox.springdata.entities.User;
 import name.felixbecker.sandbox.springdata.repositories.UserRepository;
+import name.felixbecker.sandbox.springdata.web.MainTemplate;
 
 import org.apache.log4j.Logger;
 import org.apache.wicket.markup.html.WebPage;
@@ -16,7 +17,7 @@ import org.apache.wicket.model.LoadableDetachableModel;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
-public class LandingPage extends WebPage {
+public class LandingPage extends MainTemplate {
 	private static final Logger logger = Logger.getLogger(LandingPage.class);
 	
 	@SpringBean private UserRepository userRepository;
@@ -56,6 +57,13 @@ public class LandingPage extends WebPage {
 
 	public void setUserRepository(UserRepository userRepository) {
 		this.userRepository = userRepository;
+	}
+
+
+
+	@Override
+	public String getPageTitle() {
+		return "Userübersicht";
 	}
 	
 	
