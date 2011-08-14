@@ -21,7 +21,6 @@ public class AddUserPage extends MainTemplate {
 	}
 	
 	User newUser = new User();
-
 	
 	public AddUserPage(){
 		
