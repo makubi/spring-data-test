@@ -18,6 +18,13 @@ public class User {
 	@Id	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
+	public User(String firstName, String lastName, int age){
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.age = age;
+	}
+	
+	public User(){};
 	
 	// boilerplate below
 
