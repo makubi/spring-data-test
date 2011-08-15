@@ -31,9 +31,7 @@ public class LandingPage extends MainTemplate {
 
 			@Override
 			protected void populateItem(ListItem<User> item) {
-				item.add(new Label("firstName", item.getModelObject().getFirstName()));
-				item.add(new Label("lastName", item.getModelObject().getLastName()));
-				item.add(new Label("age", item.getModelObject().getAge().toString()));
+				item.add(new Label("username", item.getModelObject().getUsername()));
 			}
 
 		});

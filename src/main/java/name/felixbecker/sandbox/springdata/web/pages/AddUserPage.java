@@ -6,7 +6,9 @@ import name.felixbecker.sandbox.springdata.web.MainTemplate;
 
 import org.apache.log4j.Logger;
 import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.RequiredTextField;
+import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
@@ -39,9 +41,12 @@ public class AddUserPage extends MainTemplate {
 			}
 			
 		};
-		form.add(new RequiredTextField<String>("firstName", new PropertyModel<String>(newUser, "firstName")));
-		form.add(new RequiredTextField<String>("lastName", new PropertyModel<String>(newUser, "lastName")));
-		form.add(new RequiredTextField<Integer>("age", new PropertyModel<Integer>(newUser, "age")));
+		
+		form.add(new RequiredTextField<Integer>("username", new PropertyModel<Integer>(newUser, "username")));
+		form.add(new PasswordTextField("password", new PropertyModel<String>(newUser, "password")));
+		form.add(new TextField<String>("firstName", new PropertyModel<String>(newUser, "firstName")));
+		form.add(new TextField<String>("lastName", new PropertyModel<String>(newUser, "lastName")));
+		form.add(new TextField<Integer>("age", new PropertyModel<Integer>(newUser, "age")));
 
 		add(form);
 	}
