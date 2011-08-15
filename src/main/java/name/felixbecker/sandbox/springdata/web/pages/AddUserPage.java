@@ -5,6 +5,7 @@ import name.felixbecker.sandbox.springdata.repositories.UserRepository;
 import name.felixbecker.sandbox.springdata.web.MainTemplate;
 
 import org.apache.log4j.Logger;
+import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.RequiredTextField;
@@ -28,6 +29,11 @@ public class AddUserPage extends MainTemplate {
 		
 		LOG.debug("constructor called");
 		LOG.debug("NewUser: " + newUser);
+		
+		final Label statusLabel = new Label("statusLabel", "User exists! Aborted.");
+		
+		statusLabel.setVisible(false);
+		
 				
 		Form<PropertyModel<User>> form = new Form<PropertyModel<User>>("addUserForm"){
 			
@@ -36,8 +42,19 @@ public class AddUserPage extends MainTemplate {
 			@Override
 			protected void onSubmit() {
 				LOG.debug("addUserForm submitted! User: " + newUser);
-				userRepository.save(newUser);
-				setResponsePage(LandingPage.class);
+				if(userRepository.findByUsername(newUser.getUsername()) == null) {
+					userRepository.save(newUser);
+					setResponsePage(LandingPage.class);
+				}
+				else {
+					statusLabel.setVisible(true);
+				}
+			}
+			
+			@Override
+			protected void onError() {
+				super.onError();
+				statusLabel.setVisible(false);
 			}
 			
 		};
@@ -47,6 +64,7 @@ public class AddUserPage extends MainTemplate {
 		form.add(new TextField<String>("firstName", new PropertyModel<String>(newUser, "firstName")));
 		form.add(new TextField<String>("lastName", new PropertyModel<String>(newUser, "lastName")));
 		form.add(new TextField<Integer>("age", new PropertyModel<Integer>(newUser, "age")));
+		form.add(statusLabel);
 
 		add(form);
 	}
